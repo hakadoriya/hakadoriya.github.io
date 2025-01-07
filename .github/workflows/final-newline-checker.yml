@@ -20,8 +20,9 @@ jobs:
           #  ^action.yml
           #  ^missing-final-newline.md
           paths-ignore: |-
-            .*\.ico$
-            .*\.png$
+            ^README.md$
+          #  .*\.ico$
+          #  .*\.png$
       - name: Submit PR comment if missing final newline
         if: ${{ steps.final-newline-checker.outputs.missing == 'true' }}
         env:
