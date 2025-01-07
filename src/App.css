@@ -1,42 +1,164 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-wrapper {
   padding: 2rem;
-  text-align: center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  max-width: 300px;
+  height: auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content-wrapper {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.company-name {
+  font-family: monospace;
+  color: #fff;
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 0.1em;
 }
 
-.card {
-  padding: 2em;
+.github-link {
+  color: #fff;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  margin-top: 2rem;
 }
 
-.read-the-docs {
-  color: #888;
+.github-link:hover {
+  opacity: 1;
+}
+
+.description {
+  font-family: monospace;
+  color: #fff;
+  opacity: 0.9;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.social-link {
+  color: #fff;
+  text-decoration: none;
+  font-family: monospace;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.social-link:hover {
+  opacity: 1;
+}
+
+.tech-stack {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2rem 0;
+  max-width: 600px;
+}
+
+.tech {
+  font-family: monospace;
+  color: #000;
+  background: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.tech:hover {
+  opacity: 1;
+}
+
+.profile-section {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.profile-name {
+  font-family: monospace;
+  color: #fff;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.profile-link {
+  color: #fff;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.profile-link:hover {
+  opacity: 1;
+}
+
+.company-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.company-link {
+  color: #fff;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+}
+
+.company-link:hover {
+  opacity: 1;
+}
+
+.tagline {
+  font-family: monospace;
+  color: #fff;
+  opacity: 0.9;
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  letter-spacing: 0.05em;
+  font-style: italic;
 }
