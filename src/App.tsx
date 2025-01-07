@@ -38,13 +38,16 @@ function App() {
         <div className="tech-stack">
           <span className="tech">System Design</span>
           <span className="tech">Infrastructure as Code</span>
-          <span className="tech">CI/CD</span>
-          <span className="tech">Kubernetes</span>
           <span className="tech">Google Cloud</span>
           <span className="tech">AWS</span>
+          <span className="tech">Terraform</span>
+          <span className="tech">Kubernetes</span>
+          <span className="tech">Docker</span>
           <span className="tech">Go</span>
+          <span className="tech">Shell Script</span>
           <span className="tech">Observability</span>
           <span className="tech">OpenTelemetry</span>
+          <span className="tech">CI/CD</span>
         </div>
 
       </div>
