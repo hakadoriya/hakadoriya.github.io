@@ -1,0 +1,74 @@
+---
+// Language switcher component for i18n
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+---
+
+<a
+  href={t.altLangPath}
+  class="lang-switcher"
+  aria-label={`Switch to ${t.altLangName}`}
+>
+  {
+    t.lang === 'ja' ? (
+      <>
+        <span class="current">JA</span>
+        <span class="separator">/</span>
+        <span class="alt">EN</span>
+      </>
+    ) : (
+      <>
+        <span class="alt">JA</span>
+        <span class="separator">/</span>
+        <span class="current">EN</span>
+      </>
+    )
+  }
+</a>
+
+<style>
+  .lang-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .lang-switcher:hover {
+    border-color: var(--color-text-muted);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    opacity: 1;
+  }
+
+  .current {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  .separator {
+    color: var(--color-text-muted);
+  }
+
+  .alt {
+    color: var(--color-text-muted);
+  }
+</style>

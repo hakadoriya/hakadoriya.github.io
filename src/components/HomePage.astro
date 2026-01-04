@@ -1,0 +1,682 @@
+---
+// Shared homepage component for all languages
+import Layout from '../layouts/Layout.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import type { Translation } from '../i18n/translations';
+
+interface Props {
+  t: Translation;
+}
+
+const { t } = Astro.props;
+---
+
+<Layout t={t}>
+  <LanguageSwitcher t={t} />
+
+  <main>
+    <!-- Hero Section - Full viewport height -->
+    <section class="hero">
+      <div class="hero-content">
+        <img src="/hakadoriya.png" alt="Hakadoriya Co. Logo" class="org-logo" />
+        <h1>{t.title}</h1>
+        <p class="tagline">{t.hero.tagline}</p>
+        <div class="org-links">
+          <a
+            href="https://github.com/hakadoriya"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Organization"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M6 9l6 6 6-6"></path>
+          <path d="M6 15l6 6 6-6"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section class="what-we-do fade-in-section">
+      <div class="section-inner">
+        <h2>{t.whatWeDo.title}</h2>
+        <p class="what-we-do-description">{t.whatWeDo.description}</p>
+        <div class="what-we-do-items">
+          {
+            t.whatWeDo.items.map((item) => (
+              <div class="what-we-do-item">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects fade-in-section">
+      <div class="section-inner">
+        <h2>{t.projects.title}</h2>
+        <div class="projects-grid">
+          {
+            t.projects.items.map((project) => (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="project-card"
+              >
+                <div class="project-image-wrapper">
+                  <div class="project-image-placeholder" />
+                  <img
+                    src={project.ogImage}
+                    alt={project.name}
+                    loading="lazy"
+                    onload="this.parentElement.classList.add('loaded')"
+                  />
+                </div>
+              </a>
+            ))
+          }
+        </div>
+        <div class="projects-more">
+          <a
+            href={t.projects.moreLink.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t.projects.moreLink.text}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Member Section -->
+    <section class="member fade-in-section">
+      <div class="section-inner">
+        <h2>{t.member.title}</h2>
+        <div class="member-card">
+          <img
+            src="/ginokent.png"
+            alt={t.member.name}
+            class="member-avatar"
+          />
+          <div class="member-info">
+            <h3>{t.member.name}</h3>
+            <div class="member-links">
+              <a
+                href="https://github.com/ginokent"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href="https://x.com/ginokentdev"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X (Twitter)"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services fade-in-section">
+      <div class="section-inner">
+        <h2>{t.services.title}</h2>
+        <ul class="service-list">
+          {t.services.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-stack fade-in-section">
+      <div class="section-inner">
+        <h2>{t.techStack.title}</h2>
+        <div class="tech-categories">
+          {
+            t.techStack.items.map((category) => (
+              <div class="tech-category">
+                <h3 class="tech-category-name">{category.name}</h3>
+                <ul class="tech-children">
+                  {category.children.length <= 5 ? (
+                    category.children.map((child) => <li>{child}</li>)
+                  ) : (
+                    <>
+                      {category.children.slice(0, 4).map((child) => (
+                        <li>{child}</li>
+                      ))}
+                      <li class="tech-expand-btn">+{category.children.length - 4}</li>
+                      {category.children.slice(4).map((child) => (
+                        <li class="tech-hidden">{child}</li>
+                      ))}
+                    </>
+                  )}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; {new Date().getFullYear()} {t.title}</p>
+  </footer>
+</Layout>
+
+<style>
+  /* Section inner container */
+  .section-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Hero Section - Full viewport */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    padding: 2rem;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .org-logo {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .tagline {
+    color: var(--color-text-muted);
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .org-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .org-links a {
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+
+  .org-links a:hover {
+    color: var(--color-text);
+    opacity: 1;
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation:
+      fadeIn 0.5s ease-out 2s forwards,
+      bounce 1.5s ease-in-out 2.5s infinite;
+    color: var(--color-text-muted);
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(8px);
+    }
+  }
+
+  .scroll-indicator.hidden {
+    visibility: hidden;
+  }
+
+  /* Fade-in animation for sections */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Section headings */
+  section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* What We Do Section */
+  .what-we-do {
+    background-color: var(--color-bg-alt);
+  }
+
+  .what-we-do-description {
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .what-we-do-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .what-we-do-item {
+    text-align: center;
+  }
+
+  .what-we-do-item h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .what-we-do-item p {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* Projects Section */
+  .projects {
+    background-color: var(--color-bg);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    display: block;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    background: white;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+  }
+
+  .project-image-wrapper {
+    position: relative;
+    aspect-ratio: 1200 / 630;
+    overflow: hidden;
+  }
+
+  .project-image-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .project-image-wrapper img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-image-wrapper.loaded img {
+    opacity: 1;
+  }
+
+  .project-image-wrapper.loaded .project-image-placeholder {
+    display: none;
+  }
+
+  .projects-more {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .projects-more a {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    transition: color 0.2s;
+  }
+
+  .projects-more a:hover {
+    color: var(--color-text);
+    opacity: 1;
+  }
+
+  /* Member Section */
+  .member {
+    background-color: var(--color-bg-alt);
+  }
+
+  .member-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .member-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .member-info h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .member-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .member-links a {
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+
+  .member-links a:hover {
+    color: var(--color-text);
+    opacity: 1;
+  }
+
+  /* Services Section */
+  .services {
+    background-color: var(--color-bg);
+  }
+
+  .service-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .service-list li {
+    padding: 1rem 2rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+
+  /* Tech Stack Section */
+  .tech-stack {
+    background-color: var(--color-bg-alt);
+  }
+
+  .tech-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .tech-category {
+    text-align: center;
+  }
+
+  .tech-category-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .tech-children {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+  }
+
+  .tech-children li {
+    padding: 0.5rem 1rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+
+  .tech-children li.tech-hidden {
+    display: none;
+  }
+
+  .tech-children li.tech-expand-btn {
+    cursor: pointer;
+    background: var(--color-text);
+    color: white;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .tech-children li.tech-expand-btn:hover {
+    opacity: 0.8;
+  }
+
+  .tech-children.expanded li.tech-hidden {
+    display: block;
+  }
+
+  .tech-children.expanded li.tech-expand-btn {
+    display: none;
+  }
+
+  /* Footer */
+  footer {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    background-color: var(--color-bg);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .tagline {
+      font-size: 1.125rem;
+    }
+
+    .org-logo {
+      width: 120px;
+      height: 120px;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .member-avatar {
+      width: 100px;
+      height: 100px;
+    }
+
+    section h2 {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .service-list li {
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+    }
+
+    .tech-category-name {
+      font-size: 1rem;
+    }
+
+    .tech-children li {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+  }
+</style>
+
+<script>
+  // Hide scroll indicator on scroll
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  if (scrollIndicator) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        scrollIndicator.classList.add('hidden');
+      } else {
+        scrollIndicator.classList.remove('hidden');
+      }
+    });
+  }
+
+  // Tech Stack expand button
+  document.querySelectorAll('.tech-expand-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const techChildren = btn.parentElement;
+      if (techChildren) {
+        techChildren.classList.add('expanded');
+      }
+    });
+  });
+
+  // Fade-in animation on scroll
+  const fadeInSections = document.querySelectorAll('.fade-in-section');
+  const fadeInObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeInObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.3,
+    }
+  );
+
+  fadeInSections.forEach((section) => {
+    fadeInObserver.observe(section);
+  });
+</script>
